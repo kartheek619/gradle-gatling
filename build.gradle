@@ -15,6 +15,9 @@ dependencies {
 }
 
 task performance(type: JavaExec) {
+
+    def simulate = project.properties["simulate"] ?: "gatling.simulations.SampleSimulation"
+
     dependsOn testClasses
     classpath = sourceSets.test.runtimeClasspath
     jvmArgs = [
@@ -23,7 +26,7 @@ task performance(type: JavaExec) {
     ]
     main = "io.gatling.app.Gatling"
     args = [
-        "--simulation", "gatling.simulations.SampleSimulation",
+        "--simulation", "${simulate}",
         "--results-folder", "${buildDir}/gatling-results",
         "--binaries-folder", sourceSets.test.output.classesDir.toString(),
         "--bodies-folder", sourceSets.test.resources.srcDirs.toList().first().toString() + "/gatling/bodies",
