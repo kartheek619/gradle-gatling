@@ -7,7 +7,9 @@ gradle performance
 
 If you have multiple simulations (Classes that extent Simulation), use the below command - 
 
+```gradle
 gradle performance -Psimulate=[gatling.simulations.NAME_OF_CLASS]
+```
 
 
 
